@@ -9,8 +9,11 @@ public class HalfPointTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        LabCompleteTrigger.SetActive(true);
-        HalfLapTrigger.SetActive(false);
+        if(other.gameObject.tag == "Player")
+        {
+            LabCompleteTrigger.SetActive(true);
+            HalfLapTrigger.SetActive(false);
+        }
 
     }
 }

@@ -13,33 +13,91 @@ public class LapComplete : MonoBehaviour
     public TextMeshProUGUI SecondText;
     public TextMeshProUGUI MiliText;
 
+    public TextMeshProUGUI LapCounterText;
+    public int lapDone;
+
+    public float rawTime;
+
     private void OnTriggerEnter(Collider other)
     {
-        if(LapTimeManager.second <= 9)
+        if (other.gameObject.tag == "Player")
         {
-            SecondText.text = "0" + LapTimeManager.second.ToString();
-        }
-        else
-        {
-            SecondText.text = LapTimeManager.second.ToString();
+            lapDone++;
+
+            if (PlayerPrefs.HasKey("RawTime"))
+            {
+                rawTime = PlayerPrefs.GetFloat("RawTime");
+                if (LapTimeManager.rawTime <= rawTime)
+                {
+                    if (LapTimeManager.second <= 9)
+                    {
+                        SecondText.text = "0" + LapTimeManager.second.ToString();
+                    }
+                    else
+                    {
+                        SecondText.text = LapTimeManager.second.ToString();
+                    }
+
+                    if (LapTimeManager.minute <= 9)
+                    {
+                        MinuteText.text = "0" + LapTimeManager.minute.ToString() + ":";
+                    }
+                    else
+                    {
+                        MinuteText.text = LapTimeManager.minute.ToString() + ":";
+                    }
+
+                    MiliText.text = "." + LapTimeManager.miliDisplay;
+
+                    PlayerPrefs.SetInt("Save_min", LapTimeManager.minute);
+                    PlayerPrefs.SetInt("Save_sec", LapTimeManager.second);
+                    PlayerPrefs.SetString("Save_mil", LapTimeManager.miliDisplay);
+                    PlayerPrefs.SetFloat("RawTime", LapTimeManager.rawTime);
+                }
+            }
+            else
+            {
+                if (LapTimeManager.second <= 9)
+                {
+                    SecondText.text = "0" + LapTimeManager.second.ToString();
+                }
+                else
+                {
+                    SecondText.text = LapTimeManager.second.ToString();
+                }
+
+                if (LapTimeManager.minute <= 9)
+                {
+                    MinuteText.text = "0" + LapTimeManager.minute.ToString() + ":";
+                }
+                else
+                {
+                    MinuteText.text = LapTimeManager.minute.ToString() + ":";
+                }
+
+                MiliText.text = "." + LapTimeManager.miliDisplay;
+
+                PlayerPrefs.SetInt("Save_min", LapTimeManager.minute);
+                PlayerPrefs.SetInt("Save_sec", LapTimeManager.second);
+                PlayerPrefs.SetString("Save_mil", LapTimeManager.miliDisplay);
+                PlayerPrefs.SetFloat("RawTime", LapTimeManager.rawTime);
+            }
+
+
+
+
+
+            LapTimeManager.minute = 0;
+            LapTimeManager.second = 0;
+            LapTimeManager.milisecond = 0;
+            LapTimeManager.rawTime = 0;
+
+            LapCounterText.text = lapDone.ToString();
+
+            HalfLapTrig.SetActive(true);
+            LapCompleteTrig.SetActive(false);
         }
 
-        if (LapTimeManager.minute <= 9)
-        {
-            MinuteText.text = "0" + LapTimeManager.minute.ToString() + ":";
-        }
-        else
-        {
-            MinuteText.text = LapTimeManager.minute.ToString() + ":";
-        }
-
-        MiliText.text = "." + LapTimeManager.miliDisplay;
-
-        LapTimeManager.minute = 0;
-        LapTimeManager.second = 0;
-        LapTimeManager.milisecond = 0;
-
-        HalfLapTrig.SetActive(true);
-        LapCompleteTrig.SetActive(false);
+        
     }
 }

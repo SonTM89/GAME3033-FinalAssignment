@@ -15,10 +15,14 @@ public class LapTimeManager : MonoBehaviour
     public TextMeshProUGUI SecondText;
     public TextMeshProUGUI MiliText;
 
+    public static float rawTime;
+
     // Update is called once per frame
     void Update()
     {
         milisecond += Time.deltaTime * 10;
+        rawTime += Time.deltaTime;
+        //Debug.Log(rawTime);
 
         if(milisecond >= 10)
         {
@@ -28,6 +32,7 @@ public class LapTimeManager : MonoBehaviour
 
         miliDisplay = milisecond.ToString("F0");
         MiliText.text = "." + miliDisplay;
+        //Debug.Log(milisecond);
 
         if (second <= 9)
         {
