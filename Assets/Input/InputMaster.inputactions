@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Viewmode",
+                    "type": "Button",
+                    "id": "ae5d9291-f33a-460d-b5be-018aaba9327c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -165,6 +173,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a551fa7e-e9b8-4d87-a980-d67e5a2f2df3",
+                    "path": "<Keyboard>/c",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Viewmode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

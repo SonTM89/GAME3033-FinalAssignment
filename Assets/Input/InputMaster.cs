@@ -33,6 +33,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Viewmode"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae5d9291-f33a-460d-b5be-018aaba9327c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -178,6 +186,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a551fa7e-e9b8-4d87-a980-d67e5a2f2df3"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Viewmode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,6 +224,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Brake = m_Player.FindAction("Brake", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_Viewmode = m_Player.FindAction("Viewmode", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -256,12 +276,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Brake;
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_Viewmode;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
         public PlayerActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Brake => m_Wrapper.m_Player_Brake;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @Viewmode => m_Wrapper.m_Player_Viewmode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -277,6 +299,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Viewmode.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnViewmode;
+                @Viewmode.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnViewmode;
+                @Viewmode.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnViewmode;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -287,6 +312,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Viewmode.started += instance.OnViewmode;
+                @Viewmode.performed += instance.OnViewmode;
+                @Viewmode.canceled += instance.OnViewmode;
             }
         }
     }
@@ -304,5 +332,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
     {
         void OnBrake(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnViewmode(InputAction.CallbackContext context);
     }
 }
