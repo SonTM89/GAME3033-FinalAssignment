@@ -186,6 +186,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "fa9a84a8-99e9-4d59-94d3-6520ff7700ac",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Value",
+                    "id": "3d4517ad-c719-47c3-99ce-cf53b234b841",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4e4cf8da-eac9-4888-83ff-8bd1cbeba059",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
