@@ -15,12 +15,23 @@ public class LapComplete : MonoBehaviour
 
     public TextMeshProUGUI LapCounterText;
     public int lapDone;
+    public int lapTotal;
 
     public float rawTime;
 
+    public GameObject RaceFinish;
+
+    private void Update()
+    {
+        if(lapDone == lapTotal)
+        {
+            RaceFinish.SetActive(true);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && lapDone < lapTotal)
         {
             lapDone++;
 
@@ -94,8 +105,11 @@ public class LapComplete : MonoBehaviour
 
             LapCounterText.text = lapDone.ToString();
 
-            HalfLapTrig.SetActive(true);
-            LapCompleteTrig.SetActive(false);
+            if(lapDone < lapTotal)
+            {
+                HalfLapTrig.SetActive(true);
+                LapCompleteTrig.SetActive(false);
+            } 
         }
 
         
