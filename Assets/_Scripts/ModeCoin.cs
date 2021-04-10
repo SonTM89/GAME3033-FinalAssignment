@@ -3,37 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ModeScore : MonoBehaviour
+public class ModeCoin : MonoBehaviour
 {
     public int ModeSelection;
 
-    public GameObject ScoreObjects;
+    public GameObject CoinObjects;
     public GameObject RaceUI;
-    public GameObject ScoreUI;
+    public GameObject CoinUI;
     public GameObject AICar;
-    public static int currentScore;
-    public int InternalScore;
+    public static int currentCoin;
+    public int InternalCoin;
 
-    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI CoinText;
 
     // Start is called before the first frame update
     void Start()
     {
         ModeSelection = ModeSelect.RaceMode;
 
-        if(ModeSelection == 1)
+        if (ModeSelection == 1)
         {
+            currentCoin = 0;
+
             RaceUI.SetActive(false);
-            ScoreUI.SetActive(true);
+            CoinUI.SetActive(true);
             AICar.SetActive(false);
-            ScoreObjects.SetActive(true);
+            CoinObjects.SetActive(true);
         }
     }
 
 
     private void Update()
     {
-        InternalScore = currentScore;
-        ScoreText.text = InternalScore.ToString();
+        InternalCoin = currentCoin;
+        CoinText.text = InternalCoin.ToString();
     }
 }

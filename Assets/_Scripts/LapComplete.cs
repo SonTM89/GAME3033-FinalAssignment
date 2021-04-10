@@ -21,6 +21,12 @@ public class LapComplete : MonoBehaviour
 
     public GameObject RaceFinish;
 
+
+    private void Start()
+    {
+        lapTotal = ModeSelect.lapTotal;
+    }
+
     private void Update()
     {
         if(lapDone == lapTotal)
@@ -96,6 +102,10 @@ public class LapComplete : MonoBehaviour
 
 
 
+
+            LapTimeManager.lastMinute = LapTimeManager.minute;
+            LapTimeManager.lastSecond = LapTimeManager.second;
+            LapTimeManager.lastMiliDisplay = LapTimeManager.miliDisplay;
 
 
             LapTimeManager.minute = 0;

@@ -11,6 +11,10 @@ public class LapTimeManager : MonoBehaviour
     public static float milisecond;
     public static string miliDisplay;
 
+    public static int lastMinute;
+    public static int lastSecond;
+    public static string lastMiliDisplay;
+
     public TextMeshProUGUI MinuteText;
     public TextMeshProUGUI SecondText;
     public TextMeshProUGUI MiliText;

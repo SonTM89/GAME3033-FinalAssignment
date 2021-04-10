@@ -18,9 +18,9 @@ public class TrackSelectMenu : MonoBehaviour
     }
 
 
-    public void Track02Selected()
-    {
-        //SceneManager.LoadScene("Gameplay");
-        SceneManager.LoadScene(3);
-    }
+    //public void Track02Selected()
+    //{
+    //    //SceneManager.LoadScene("Gameplay");
+    //    SceneManager.LoadScene(2);
+    //}
 }

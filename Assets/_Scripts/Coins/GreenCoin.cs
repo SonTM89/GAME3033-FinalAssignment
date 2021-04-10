@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenScore : MonoBehaviour
+public class GreenCoin : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        ModeScore.currentScore += 50;
+        ModeCoin.currentCoin += 5;
         gameObject.SetActive(false);
     }
 }
