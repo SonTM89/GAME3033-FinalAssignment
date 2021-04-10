@@ -8,7 +8,13 @@ public class MainMenu : MonoBehaviour
    public void OnPlayButtonPressed()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene(1);
+    }
+
+
+    public void OnTrackButtonPressed()
+    {
+        SceneManager.LoadScene(1);
     }
 
 
@@ -17,6 +23,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit!");
         Application.Quit();
     }
+
 
     public void OnMainMenuButtonpressed()
     {

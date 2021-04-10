@@ -20,6 +20,10 @@ public class TestCar01Track : MonoBehaviour
     public GameObject Mark12;
     public GameObject Mark13;
     public GameObject Mark14;
+    public GameObject Mark15;
+    public GameObject Mark16;
+    public GameObject Mark17;
+    public GameObject Mark18;
 
     public int MarkTracker;
 
@@ -82,6 +86,22 @@ public class TestCar01Track : MonoBehaviour
         {
             TheMarker.transform.position = Mark14.transform.position;
         }
+        else if (MarkTracker == 14)
+        {
+            TheMarker.transform.position = Mark15.transform.position;
+        }
+        else if (MarkTracker == 15)
+        {
+            TheMarker.transform.position = Mark16.transform.position;
+        }
+        else if (MarkTracker == 16)
+        {
+            TheMarker.transform.position = Mark17.transform.position;
+        }
+        else if (MarkTracker == 17)
+        {
+            TheMarker.transform.position = Mark18.transform.position;
+        }
     }
 
     IEnumerator OnTriggerEnter(Collider collision)
@@ -91,7 +111,7 @@ public class TestCar01Track : MonoBehaviour
             this.GetComponent<BoxCollider>().enabled = false;
             MarkTracker += 1;
 
-            if(MarkTracker == 14)
+            if(MarkTracker == 18)
             {
                 MarkTracker = 0;
             }

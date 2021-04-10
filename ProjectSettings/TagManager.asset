@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TestCar01
   - Opponent
+  - CarPos
   layers:
   - Default
   - TransparentFX
